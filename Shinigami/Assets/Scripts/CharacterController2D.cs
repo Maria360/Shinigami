@@ -21,6 +21,11 @@ public class CharacterController2D : MonoBehaviour
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 
+	[SerializeField] float startDashTime;
+	[SerializeField] float dashSpeed;
+	float dashTime;
+	int direction;
+
 	[Header("Events")]
 	[Space]
 
@@ -34,6 +39,7 @@ public class CharacterController2D : MonoBehaviour
 
 	private void Awake()
 	{
+		dashTime = startDashTime;
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
 		if (OnLandEvent == null)
@@ -63,8 +69,28 @@ public class CharacterController2D : MonoBehaviour
 	}
 
 
-	public void Move(float move, bool crouch, bool jump)
+	public void Move(float move, bool crouch, bool jump, bool dash)
 	{
+        if(dash && m_Grounded)
+        {
+            if (dashTime <= 0)
+            {
+				dash = false;
+				dashTime = startDashTime;
+				m_Rigidbody2D.velocity = Vector2.zero;
+            }
+            else
+            {
+				dashTime -= Time.deltaTime;
+                if (m_FacingRight)
+                {
+					m_Rigidbody2D.velocity = Vector2.right * dashSpeed;
+                }else if (!m_FacingRight)
+                {
+					m_Rigidbody2D.velocity = Vector2.left * dashSpeed;
+                }
+            }
+        }
 		// If crouching, check to see if the character can stand up
 		if (crouch) //ORIGINAL !crouch
 		{
@@ -134,6 +160,7 @@ public class CharacterController2D : MonoBehaviour
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
 	}
+	
 
 
 	private void Flip()
