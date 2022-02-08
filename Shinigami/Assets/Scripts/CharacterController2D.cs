@@ -21,10 +21,9 @@ public class CharacterController2D : MonoBehaviour
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 
-	[SerializeField] float startDashTime;
+	public float startDashTime;
 	[SerializeField] float dashSpeed;
-	float dashTime;
-	int direction;
+	public float dashTime;
 
 	[Header("Events")]
 	[Space]
@@ -71,18 +70,21 @@ public class CharacterController2D : MonoBehaviour
 
 	public void Move(float move, bool crouch, bool jump, bool dash)
 	{
+		
         if(dash && m_Grounded)
         {
             if (dashTime <= 0)
             {
-				dash = false;
-				dashTime = startDashTime;
-				m_Rigidbody2D.velocity = Vector2.zero;
+				//dash = false;
+				//dashTime = startDashTime;
+				//m_Rigidbody2D.velocity = Vector2.zero;
             }
             else
             {
 				dashTime -= Time.deltaTime;
-                if (m_FacingRight)
+				Debug.Log(dashTime);
+				OnCrouchEvent.Invoke(true);
+				if (m_FacingRight)
                 {
 					m_Rigidbody2D.velocity = Vector2.right * dashSpeed;
                 }else if (!m_FacingRight)
@@ -91,6 +93,11 @@ public class CharacterController2D : MonoBehaviour
                 }
             }
         }
+		else if (!dash)
+        {
+			OnCrouchEvent.Invoke(false);
+
+		}
 		// If crouching, check to see if the character can stand up
 		if (crouch) //ORIGINAL !crouch
 		{
