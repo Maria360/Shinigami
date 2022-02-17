@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     bool crouch = false;
     bool dash = false;
     float timer = 0f;
+    bool dashReady;
     void Update()
     {
         horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
+            //dash = false;
             animator.SetBool("IsJumping", true);
         }
         if (Input.GetButtonDown("Crouch"))
@@ -31,18 +33,23 @@ public class PlayerMovement : MonoBehaviour
         {
             crouch = false;
         }
-        if (Input.GetKeyDown(KeyCode.E) && !dash)
+        if (Input.GetKeyDown(KeyCode.E) && !dash && controller.m_Grounded)//&& dashReady)
         {
             dash = true;
-            
         }
         else if (dash && controller.dashTime<=0)
         {
             dash = false;
             controller.dashTime = controller.startDashTime;
-
-
         }
+        /*if (dash)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 2f)
+            {
+
+            }
+        }*/
         /*else if (Input.GetKeyUp(KeyCode.E))
         {
             dash = false;
@@ -63,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump, dash);
         jump = false;
         //dash = false;
-
     }
 
 }

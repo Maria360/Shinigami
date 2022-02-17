@@ -15,7 +15,7 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] float TargetVelocityMultiplier = 10f;
 
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
-	private bool m_Grounded;            // Whether or not the player is grounded.
+	public bool m_Grounded;            // Whether or not the player is grounded.
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
@@ -71,7 +71,7 @@ public class CharacterController2D : MonoBehaviour
 	public void Move(float move, bool crouch, bool jump, bool dash)
 	{
 		
-        if(dash && m_Grounded)
+        if(dash)//&& m_Grounded)
         {
             if (dashTime <= 0)
             {
@@ -87,7 +87,8 @@ public class CharacterController2D : MonoBehaviour
 				if (m_FacingRight)
                 {
 					m_Rigidbody2D.velocity = Vector2.right * dashSpeed;
-                }else if (!m_FacingRight)
+                }
+				else if (!m_FacingRight)
                 {
 					m_Rigidbody2D.velocity = Vector2.left * dashSpeed;
                 }
