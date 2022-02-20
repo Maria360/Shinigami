@@ -34,9 +34,9 @@ public class Movement_C : MonoBehaviour
 
     public int side = 1;
 
-    //[Space]
-    //[Header("Polish")]
-    //public ParticleSystem dashParticle;
+    [Space]
+    [Header("Polish")]
+    public ParticleSystem dashParticle;
     //public ParticleSystem jumpParticle;
     //public ParticleSystem wallJumpParticle;
     //public ParticleSystem slideParticle;
@@ -185,7 +185,7 @@ public class Movement_C : MonoBehaviour
         StartCoroutine(GroundDash());
         DOVirtual.Float(14, 0, .8f, RigidbodyDrag);
 
-        //dashParticle.Play();
+        dashParticle.Play();
         rb.gravityScale = 0;
         GetComponent<BetterJumping>().enabled = false;
         wallJumped = true;
@@ -193,7 +193,7 @@ public class Movement_C : MonoBehaviour
 
         yield return new WaitForSeconds(.3f);
 
-        //dashParticle.Stop();
+        dashParticle.Stop();
         rb.gravityScale = 3;
         GetComponent<BetterJumping>().enabled = true;
         wallJumped = false;
