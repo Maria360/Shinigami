@@ -3904,6 +3904,7 @@ MonoBehaviour:
   wallJumped: 0
   wallSlide: 0
   isDashing: 0
+  isAttacking: 0
   side: 1
   dashParticle: {fileID: 8236440694742447187}
 --- !u!70 &1105108645

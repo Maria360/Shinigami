@@ -26,6 +26,7 @@ public class Movement_C : MonoBehaviour
     public bool wallJumped;
     public bool wallSlide;
     public bool isDashing;
+    public bool isAttacking;
 
     [Space]
 
@@ -120,6 +121,11 @@ public class Movement_C : MonoBehaviour
         {
             if (xRaw != 0 || yRaw != 0)
                 Dash(xRaw, yRaw);
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Attacking();
+            
         }
 
         if (coll.onGround && !groundTouch)
@@ -270,6 +276,17 @@ public class Movement_C : MonoBehaviour
         rb.velocity += dir * jumpForce;
 
         //particle.Play();
+    }
+    private void Attacking()
+    {
+        anim.SetTrigger("attack");
+        StartCoroutine(AttackWait());
+    }
+    IEnumerator AttackWait()
+    {
+        isAttacking = true;
+        yield return new WaitForSeconds(.4f);
+        isAttacking = false;
     }
 
     IEnumerator DisableMovement(float time)

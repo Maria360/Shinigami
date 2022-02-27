@@ -7,7 +7,7 @@ public class AnimationScript : MonoBehaviour
 
     private Animator anim;
     private Movement_C move;
-    //private Attack attack;
+    ///private Attack attack;
     private Collision coll;
     [HideInInspector]
     public SpriteRenderer sr;
@@ -30,7 +30,7 @@ public class AnimationScript : MonoBehaviour
         anim.SetBool("wallSlide", move.wallSlide);
         anim.SetBool("canMove", move.canMove);
         anim.SetBool("isDashing", move.isDashing);
-        //anim.SetBool("isAttacking", attack.isAttacking);
+        anim.SetBool("isAttacking", move.isAttacking);
 
     }
 
