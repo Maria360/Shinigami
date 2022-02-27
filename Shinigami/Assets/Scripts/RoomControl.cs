@@ -14,7 +14,7 @@ public class RoomControl : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Palyer"))
+        if (collision.CompareTag("Player"))
         {
             CameraController.instance.activeRoom = transform.GetChild(0);
         }
