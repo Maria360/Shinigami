@@ -7,6 +7,7 @@ public class AnimationScript : MonoBehaviour
 
     private Animator anim;
     private Movement_C move;
+    private Attack attack;
     private Collision coll;
     [HideInInspector]
     public SpriteRenderer sr;
@@ -16,6 +17,7 @@ public class AnimationScript : MonoBehaviour
         anim = GetComponent<Animator>();
         coll = GetComponentInParent<Collision>();
         move = GetComponentInParent<Movement_C>();
+        attack = GetComponent<Attack>();
         sr = GetComponent<SpriteRenderer>();
     }
 
@@ -28,6 +30,7 @@ public class AnimationScript : MonoBehaviour
         anim.SetBool("wallSlide", move.wallSlide);
         anim.SetBool("canMove", move.canMove);
         anim.SetBool("isDashing", move.isDashing);
+        anim.SetBool("isAttacking", attack.isAttacking);
 
     }
 
