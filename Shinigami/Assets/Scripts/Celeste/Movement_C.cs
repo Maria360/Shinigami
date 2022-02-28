@@ -318,6 +318,7 @@ public class Movement_C : MonoBehaviour
     public void JumpClick()
     {
         isJumpClick = true;
+        //GetComponent<BetterJumping>().enabled = true;
     }
     public void ClickDash()
     {
