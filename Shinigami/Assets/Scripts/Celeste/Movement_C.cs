@@ -134,7 +134,7 @@ public class Movement_C : MonoBehaviour
                 WallJump();
         }
 
-        if ((Input.GetKeyDown(KeyCode.E) && !hasDashed)||isDashClick)
+        if ((Input.GetKeyDown(KeyCode.E) && !hasDashed)||(isDashClick && !hasDashed))
         {
             isDashClick = false;
             
