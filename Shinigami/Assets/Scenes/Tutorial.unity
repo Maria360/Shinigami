@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 108034610}
   - component: {fileID: 108034609}
   - component: {fileID: 108034608}
+  - component: {fileID: 108034611}
   m_Layer: 5
   m_Name: right
   m_TagString: Untagged
@@ -436,6 +437,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108034606}
   m_CullTransparentMesh: 1
+--- !u!114 &108034611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108034606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1105108647}
+          m_TargetAssemblyTypeName: Movement_C, Assembly-CSharp
+          m_MethodName: ClickRight
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1105108647}
+          m_TargetAssemblyTypeName: Movement_C, Assembly-CSharp
+          m_MethodName: RealeseRight
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &141584624
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +842,7 @@ GameObject:
   - component: {fileID: 227706856}
   - component: {fileID: 227706855}
   - component: {fileID: 227706854}
+  - component: {fileID: 227706857}
   m_Layer: 5
   m_Name: jump
   m_TagString: Untagged
@@ -906,6 +953,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227706852}
   m_CullTransparentMesh: 1
+--- !u!114 &227706857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227706852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1105108647}
+          m_TargetAssemblyTypeName: Movement_C, Assembly-CSharp
+          m_MethodName: JumpClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &256288643
 GameObject:
   m_ObjectHideFlags: 0
@@ -2778,6 +2854,7 @@ GameObject:
   - component: {fileID: 798748335}
   - component: {fileID: 798748334}
   - component: {fileID: 798748333}
+  - component: {fileID: 798748336}
   m_Layer: 5
   m_Name: dash
   m_TagString: Untagged
@@ -2888,6 +2965,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798748331}
   m_CullTransparentMesh: 1
+--- !u!114 &798748336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798748331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1105108647}
+          m_TargetAssemblyTypeName: Movement_C, Assembly-CSharp
+          m_MethodName: ClickDash
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &823339019
 GameObject:
   m_ObjectHideFlags: 0
@@ -4027,6 +4133,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5359878614270633671, guid: a94623d5d6a9f9146a6fd8f5845591a1, type: 3}
   m_PrefabInstance: {fileID: 5359878615348476004}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1105108647 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5359878614270633664, guid: a94623d5d6a9f9146a6fd8f5845591a1, type: 3}
+  m_PrefabInstance: {fileID: 5359878615348476004}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105108643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cdd25abeaf037840acaa042037942e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1105108648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5359878614270633676, guid: a94623d5d6a9f9146a6fd8f5845591a1, type: 3}
@@ -4420,6 +4537,7 @@ GameObject:
   - component: {fileID: 1333685045}
   - component: {fileID: 1333685044}
   - component: {fileID: 1333685043}
+  - component: {fileID: 1333685046}
   m_Layer: 5
   m_Name: left
   m_TagString: Untagged
@@ -4530,6 +4648,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333685041}
   m_CullTransparentMesh: 1
+--- !u!114 &1333685046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333685041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1105108647}
+          m_TargetAssemblyTypeName: Movement_C, Assembly-CSharp
+          m_MethodName: ClikLeft
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1105108647}
+          m_TargetAssemblyTypeName: Movement_C, Assembly-CSharp
+          m_MethodName: RealeseLeft
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1334263960
 GameObject:
   m_ObjectHideFlags: 0
@@ -4987,6 +5150,7 @@ GameObject:
   - component: {fileID: 1500935637}
   - component: {fileID: 1500935636}
   - component: {fileID: 1500935635}
+  - component: {fileID: 1500935638}
   m_Layer: 5
   m_Name: attack
   m_TagString: Untagged
@@ -5097,6 +5261,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500935633}
   m_CullTransparentMesh: 1
+--- !u!114 &1500935638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500935633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1105108647}
+          m_TargetAssemblyTypeName: Movement_C, Assembly-CSharp
+          m_MethodName: ClickAttack
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1530695620
 GameObject:
   m_ObjectHideFlags: 0

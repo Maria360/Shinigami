@@ -27,6 +27,7 @@ public class Movement_C : MonoBehaviour
     public bool wallSlide;
     public bool isDashing;
     public bool isAttacking;
+    bool isLeft, isRight, isJumpClick, isDashClick, isAttackClick;
 
     [Space]
 
@@ -55,6 +56,21 @@ public class Movement_C : MonoBehaviour
         float y = Input.GetAxis("Vertical");
         float xRaw = Input.GetAxisRaw("Horizontal");
         float yRaw = Input.GetAxisRaw("Vertical");
+        if(isLeft) //c:
+        {
+            x = -1;
+            xRaw = -1;
+        }
+        else if (isRight)
+        {
+            x = 1;
+            xRaw = 1;
+        }
+        if (isJumpClick)
+        {
+            y = 1;
+            yRaw = 1;
+        }
         Vector2 dir = new Vector2(x, y);
 
         Walk(dir);
@@ -107,8 +123,9 @@ public class Movement_C : MonoBehaviour
         if (!coll.onWall || coll.onGround)
             wallSlide = false;
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump")||isJumpClick)
         {
+            isJumpClick = false;
             anim.SetTrigger("jump");
 
             if (coll.onGround)
@@ -117,15 +134,17 @@ public class Movement_C : MonoBehaviour
                 WallJump();
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && !hasDashed)
+        if ((Input.GetKeyDown(KeyCode.E) && !hasDashed)||isDashClick)
         {
+            isDashClick = false;
+            
             if (xRaw != 0 || yRaw != 0)
                 Dash(xRaw, yRaw);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)||isAttackClick)
         {
+            isAttackClick = false;
             Attacking();
-            
         }
 
         if (coll.onGround && !groundTouch)
@@ -261,7 +280,7 @@ public class Movement_C : MonoBehaviour
         {
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
         }
-        else
+        else 
         {
             rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
         }
@@ -271,16 +290,42 @@ public class Movement_C : MonoBehaviour
     {
         //slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
         //ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
-
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.velocity += dir * jumpForce;
-
         //particle.Play();
     }
     private void Attacking()
     {
         anim.SetTrigger("attack");
         StartCoroutine(AttackWait());
+    }
+    public void ClikLeft()
+    {
+        isLeft = true;
+    }
+    public void ClickRight()
+    {
+        isRight = true;
+    }
+    public void RealeseLeft()
+    {
+        isLeft = false;
+    }
+    public void RealeseRight()
+    {
+        isRight = false;
+    }
+    public void JumpClick()
+    {
+        isJumpClick = true;
+    }
+    public void ClickDash()
+    {
+        isDashClick = true;
+    }
+    public void ClickAttack()
+    {
+        isAttackClick = true;
     }
     IEnumerator AttackWait()
     {
