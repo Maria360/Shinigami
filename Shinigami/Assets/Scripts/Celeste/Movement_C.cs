@@ -43,6 +43,9 @@ public class Movement_C : MonoBehaviour
     //public ParticleSystem wallJumpParticle;
     //public ParticleSystem slideParticle;
 
+    //public Transform visual;
+    //Vector3 localScale; 
+
     void Start()
     {
         coll = GetComponent<Collision>();
@@ -182,8 +185,8 @@ public class Movement_C : MonoBehaviour
         hasDashed = false;
         isDashing = false;
 
-        side = anim.sr.flipX ? -1 : 1;
-
+        side = anim.sr.flipX ? -1 : 1; //Aca es donde flipea a x?
+        //localScale.x = -localScale.x;
         //jumpParticle.Play();
     }
 
