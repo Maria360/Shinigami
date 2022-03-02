@@ -59,8 +59,8 @@ public class AnimationScript : MonoBehaviour
                 return;
             }
         }
-
-        bool state = (side == 1) ? false : true;
-        sr.flipX = state;
+        transform.localScale = new Vector3(side,1,1);
+        //bool state = (side == 1) ? false : true;
+        //sr.flipX = state;
     }
 }

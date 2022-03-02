@@ -45,7 +45,7 @@ public class Movement_C : MonoBehaviour
 
     //public Transform visual;
     //Vector3 localScale; 
-
+    public Camera cam;
     void Start()
     {
         coll = GetComponent<Collision>();
@@ -61,6 +61,7 @@ public class Movement_C : MonoBehaviour
         float yRaw = Input.GetAxisRaw("Vertical");
         if(isLeft) //c:
         {
+            
             x = -1;
             xRaw = -1;
         }
@@ -192,9 +193,9 @@ public class Movement_C : MonoBehaviour
 
     private void Dash(float x, float y)
     {
-        Camera.main.transform.DOComplete();
-        Camera.main.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
-        FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
+        cam.transform.DOComplete();
+        cam.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
+        FindObjectOfType<RippleEffect>().Emit(cam.WorldToViewportPoint(transform.position));
 
         hasDashed = true;
 
