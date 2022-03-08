@@ -6,29 +6,27 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    Enemy enemy;
+    //Enemy enemy;
     public float playerHealth;
     public GameObject HealthBarPanel;
     Slider slider;
 
     private void Start()
     {
-        enemy = GetComponent<Enemy>();
+        //enemy = GetComponent<Enemy>();
         slider = HealthBarPanel.GetComponent<Slider>();
         slider.value = playerHealth;
 
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void TakeDamage(float damage)
     {
-        if (collision.CompareTag("Enemy Wepon"))
+        playerHealth -= damage;
+        slider.value = playerHealth;
+        if (playerHealth <= 0)
         {
-            playerHealth -= enemy.damage2Player;
-            slider.value = playerHealth;
-
-            if (playerHealth <= 0)
-            {
-                Destroy(gameObject);//temporal
-            }
+            gameObject.SetActive(false);//temporal
         }
+
+
     }
 }
