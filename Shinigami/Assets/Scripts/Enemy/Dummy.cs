@@ -21,7 +21,7 @@ public class Dummy : MonoBehaviour
         if (collision.CompareTag("Wepon"))
         {
             HealthBarPanel.SetActive(true);
-            dummyHealth -= damage2Dummy;
+            dummyHealth -= damage2Dummy/2;
             slider.value = dummyHealth;
 
             if (dummyHealth<= 0)
