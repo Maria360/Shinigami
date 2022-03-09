@@ -46,6 +46,7 @@ public class Movement_C : MonoBehaviour
     //public Transform visual;
     //Vector3 localScale; 
     public Camera cam;
+    public ParticleSystem attackParticle;
     void Start()
     {
         coll = GetComponent<Collision>();
@@ -302,6 +303,12 @@ public class Movement_C : MonoBehaviour
     {
         anim.SetTrigger("attack");
         StartCoroutine(AttackWait());
+        Invoke("PlayAttackParticle", 0.2f);
+    }
+    public void PlayAttackParticle()
+    {
+        
+        attackParticle.Play();
     }
     public void ClikLeft()
     {
