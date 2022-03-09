@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
     public float playerHealth;
     public GameObject HealthBarPanel;
     Slider slider;
+    public ParticleSystem impactEffect;
+
 
     private void Start()
     {
