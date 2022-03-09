@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     public GameObject HealthBarPanel;
     Slider slider;
     public ParticleSystem impactEffect;
+    public bool playerIsDead = false;
 
 
     private void Start()
@@ -26,6 +27,7 @@ public class Health : MonoBehaviour
         slider.value = playerHealth;
         if (playerHealth <= 0)
         {
+            FindObjectOfType<Manager>().EndGame(); //Esto consume mucho recurso :c
             gameObject.SetActive(false);//temporal
         }
 
