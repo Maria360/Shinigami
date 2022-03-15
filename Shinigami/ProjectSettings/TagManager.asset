@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Wepon
   - Enemy Wepon
+  - Power Up
   layers:
   - Default
   - TransparentFX

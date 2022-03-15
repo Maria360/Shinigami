@@ -47,6 +47,8 @@ public class Movement_C : MonoBehaviour
     //Vector3 localScale; 
     public Camera cam;
     public ParticleSystem attackParticle;
+    bool canAttack = true;
+    float timer = 0.3f;
     void Start()
     {
         coll = GetComponent<Collision>();
@@ -146,10 +148,23 @@ public class Movement_C : MonoBehaviour
             if (xRaw != 0 || yRaw != 0)
                 Dash(xRaw, yRaw);
         }
-        if (Input.GetKeyDown(KeyCode.Space)||isAttackClick)
+        if ((Input.GetKeyDown(KeyCode.Space)||isAttackClick) && canAttack)
         {
+            canAttack = false;
+            //Debug.Log(timer);
             isAttackClick = false;
             Attacking();
+            
+        }
+        if (!canAttack)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                //Debug.Log("entro" + timer);
+                canAttack = true;
+                timer = 0.3f;
+            }
         }
 
         if (coll.onGround && !groundTouch)

@@ -10,10 +10,12 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] float damage2Enemy;
     public GameObject HealthBarPanel;
     Slider slider;
+    PlayerPower playerPower;
 
     private void Start()
     {
         enemy = GetComponent<Enemy>();
+        playerPower = FindObjectOfType<PlayerPower>();
         HealthBarPanel.SetActive(false);
         slider = HealthBarPanel.GetComponent<Slider>();
         slider.value = enemy.healthPoints;
@@ -24,7 +26,7 @@ public class EnemyHealth : MonoBehaviour
         if (collision.CompareTag("Wepon"))
         {
             HealthBarPanel.SetActive(true);
-            enemy.healthPoints -= damage2Enemy/2; //Me esta bajando el doble
+            enemy.healthPoints -= playerPower.damage/2; //Me esta bajando el doble
             slider.value = enemy.healthPoints;
 
             if (enemy.healthPoints <= 0)
