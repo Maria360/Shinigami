@@ -48,7 +48,7 @@ public class Movement_C : MonoBehaviour
     public Camera cam;
     public ParticleSystem attackParticle;
     bool canAttack = true;
-    float timer = 0.3f;
+    float timer = 0.45f;
     void Start()
     {
         coll = GetComponent<Collision>();
@@ -163,7 +163,7 @@ public class Movement_C : MonoBehaviour
             {
                 //Debug.Log("entro" + timer);
                 canAttack = true;
-                timer = 0.3f;
+                timer = 0.45f;
             }
         }
 
@@ -392,5 +392,6 @@ public class Movement_C : MonoBehaviour
     {
         int particleSide = coll.onRightWall ? 1 : -1;
         return particleSide;
+        
     }
 }
