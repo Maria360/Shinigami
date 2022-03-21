@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject HealthBarPanel;
     Slider slider;
     PlayerPower playerPower;
-
+    public AudioSource damageSFX;
     private void Start()
     {
         enemy = GetComponent<Enemy>();
@@ -27,6 +27,7 @@ public class EnemyHealth : MonoBehaviour
         {
             HealthBarPanel.SetActive(true);
             enemy.healthPoints -= playerPower.damage/2; //Me esta bajando el doble
+            damageSFX.Play();
             slider.value = enemy.healthPoints;
 
             if (enemy.healthPoints <= 0)

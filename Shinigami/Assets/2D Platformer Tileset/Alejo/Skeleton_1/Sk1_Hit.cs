@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class Sk1_Hit : MonoBehaviour
 {
+    public Health player;
+    public float damage2Player;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
-            print("daño");
+            player.TakeDamage(damage2Player);
         }
     }
     void Start()
     {
-        
+        player = FindObjectOfType<Health>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

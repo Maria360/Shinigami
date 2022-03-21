@@ -10,6 +10,7 @@ public class Dummy : MonoBehaviour
     public ParticleSystem deadDummyEffect;
     public GameObject HealthBarPanel;
     Slider slider;
+    public AudioSource damageSFX;
     private void Start()
     {
         HealthBarPanel.SetActive(false);
@@ -22,6 +23,7 @@ public class Dummy : MonoBehaviour
         {
             HealthBarPanel.SetActive(true);
             dummyHealth -= damage2Dummy/2;
+            damageSFX.Play();
             slider.value = dummyHealth;
 
             if (dummyHealth<= 0)

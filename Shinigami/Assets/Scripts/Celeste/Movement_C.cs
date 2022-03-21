@@ -49,6 +49,10 @@ public class Movement_C : MonoBehaviour
     public ParticleSystem attackParticle;
     bool canAttack = true;
     float timer = 0.45f;
+
+    public AudioSource jumpSFX;
+    public AudioSource dashSFX;
+
     void Start()
     {
         coll = GetComponent<Collision>();
@@ -133,6 +137,7 @@ public class Movement_C : MonoBehaviour
         if (Input.GetButtonDown("Jump")||isJumpClick)
         {
             isJumpClick = false;
+            jumpSFX.Play();
             anim.SetTrigger("jump");
 
             if (coll.onGround)
@@ -144,7 +149,7 @@ public class Movement_C : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.E) && !hasDashed)||(isDashClick && !hasDashed))
         {
             isDashClick = false;
-            
+            dashSFX.Play();
             if (xRaw != 0 || yRaw != 0)
                 Dash(xRaw, yRaw);
         }

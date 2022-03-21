@@ -12,10 +12,13 @@ public class Health : MonoBehaviour
     Slider slider;
     public ParticleSystem impactEffect;
     public bool playerIsDead = false;
+    //private Animator anim;
+    public AudioSource hitSFX;
 
 
     private void Start()
     {
+        //anim = GetComponent<Animator>();
         //enemy = GetComponent<Enemy>();
         slider = HealthBarPanel.GetComponent<Slider>();
         slider.value = playerHealth;
@@ -24,6 +27,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         playerHealth -= damage;
+        hitSFX.Play();
         slider.value = playerHealth;
         if (playerHealth <= 0)
         {
