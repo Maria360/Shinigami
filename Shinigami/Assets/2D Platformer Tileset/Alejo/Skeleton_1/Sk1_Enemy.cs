@@ -18,6 +18,11 @@ public class Sk1_Enemy : MonoBehaviour
     public float rango_ataque;
     public GameObject rango;
     public GameObject Hit;
+    RaycastHit hit;
+    public LayerMask LayerM;
+    public float distance;
+    public bool right;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -28,11 +33,17 @@ public class Sk1_Enemy : MonoBehaviour
     void Update()
     {
         comportamiento();
+        
+        
+        if(Physics2D.Raycast(transform.position, transform.right, distance, LayerM))
+        {
+            right = !right;
+        }
     }
 
     public void comportamiento()
     {
-        if(Mathf.Abs(transform.position.x - target.transform.position.x) > rango_vision && !atacando)
+        if(Mathf.Abs(transform.position.x - target.transform.position.x) > rango_vision && !atacando && right )
         {
             
             anim.SetBool("run", false);
@@ -130,5 +141,10 @@ public class Sk1_Enemy : MonoBehaviour
         Hit.GetComponent<BoxCollider2D>().enabled = false;
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(transform.position, transform.right * distance);
+    }
 
+ 
 }
