@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class AIEnemy : MonoBehaviour
 {
     [SerializeField]
-    Transform player;
+    Transform Player;
 
     [SerializeField]
     float Range;
@@ -22,17 +22,21 @@ public class AIEnemy : MonoBehaviour
     public Animator anim;
     private bool right;
 
+    public Health player;
+    public float damage2Player;
+
     void Start()
     {
         right = true;
         rb2d = GetComponent<Rigidbody2D>();
+        player = FindObjectOfType<Health>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        float playerdistance = Vector2.Distance(transform.position, player.position);
+        float playerdistance = Vector2.Distance(transform.position, Player.position);
 
         if (playerdistance < Range && playerdistance > Attack_Range)
         {
@@ -43,7 +47,7 @@ public class AIEnemy : MonoBehaviour
 
         else if (playerdistance < Attack_Range)
         {
-            anim.SetBool("Attak", true);
+            anim.SetBool("attack", true);
             anim.SetBool("follow", false);
         }
 
@@ -61,13 +65,13 @@ public class AIEnemy : MonoBehaviour
 
     private void FollowPlayer()
     {
-        if (transform.position.x < player.position.x && !right)
+        if (transform.position.x < Player.position.x && !right)
         {
 
             rb2d.velocity = new Vector2(movement_speed, 0f);
             Flip();
         }
-        else if (transform.position.x > player.position.x && right)
+        else if (transform.position.x > Player.position.x && right)
         {
             rb2d.velocity = new Vector2(-movement_speed, 0f);
             Flip();
@@ -108,7 +112,7 @@ public class AIEnemy : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            
+            player.TakeDamage(damage2Player);
         }
 
 
