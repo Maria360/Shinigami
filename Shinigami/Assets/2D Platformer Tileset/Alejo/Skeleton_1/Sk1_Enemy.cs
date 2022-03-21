@@ -48,7 +48,7 @@ public class Sk1_Enemy : MonoBehaviour
             
             anim.SetBool("run", false);
             cronometro += 1 * Time.deltaTime;
-            if (cronometro >= 3)
+            if (cronometro >= 1.5)
             {
                 rutina = Random.Range(0, 2);
                 cronometro = 0;
