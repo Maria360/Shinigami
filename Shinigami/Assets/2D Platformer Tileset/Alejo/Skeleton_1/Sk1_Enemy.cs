@@ -32,8 +32,18 @@ public class Sk1_Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        comportamiento();
-        
+        if(right)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.Translate(Vector3.right * speed_run * Time.deltaTime);
+            anim.SetBool("run", true);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            transform.Translate(Vector3.right * speed_run * Time.deltaTime);
+            anim.SetBool("run", true);
+        }
         
         if(Physics2D.Raycast(transform.position, transform.right, distance, LayerM))
         {
@@ -43,7 +53,7 @@ public class Sk1_Enemy : MonoBehaviour
 
     public void comportamiento()
     {
-        if(Mathf.Abs(transform.position.x - target.transform.position.x) > rango_vision && !atacando && right )
+        if(Mathf.Abs(transform.position.x - target.transform.position.x) > rango_vision && !atacando )
         {
             
             anim.SetBool("run", false);

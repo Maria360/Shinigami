@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     Slider slider;
     PlayerPower playerPower;
     public AudioSource damageSFX;
+    public Animator anim;
     private void Start()
     {
         enemy = GetComponent<Enemy>();
@@ -32,9 +33,18 @@ public class EnemyHealth : MonoBehaviour
 
             if (enemy.healthPoints <= 0)
             {
+                Esperar();
                 Destroy(gameObject);
                 
             }
         }
+    }
+
+    IEnumerator Esperar()
+    {
+        yield return new WaitForSeconds(3);
+        anim.SetBool("die", true);
+
+
     }
 }
