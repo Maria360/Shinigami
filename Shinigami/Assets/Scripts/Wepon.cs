@@ -38,7 +38,7 @@ public class Wepon : MonoBehaviour
 
                 player.TakeDamage(damage2Player);
                 
-                player.impactEffect.Play();
+                //player.impactEffect.Play();
             }
             line.SetPosition(0, firepoint.position);
             line.SetPosition(1, hitInfo.point);
