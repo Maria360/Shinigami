@@ -29,8 +29,6 @@ public class Wepon : MonoBehaviour
 
         if (hitInfo)
         {
-            
-
             Debug.Log(hitInfo.transform.name); 
             Health player = hitInfo.transform.GetComponent<Health>();
             if(player != null)

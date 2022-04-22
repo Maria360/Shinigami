@@ -46230,6 +46230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b49559c3774ee474dbabeb0b10126bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneNumber: 2
 --- !u!1 &1359737345
 GameObject:
   m_ObjectHideFlags: 0
@@ -101798,6 +101799,7 @@ MonoBehaviour:
   damage2Enemy: 5
   HealthBarPanel: {fileID: 1919057508}
   damageSFX: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!114 &4228514627986188689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116775,6 +116777,7 @@ MonoBehaviour:
   damage2Enemy: 10
   HealthBarPanel: {fileID: 351862346}
   damageSFX: {fileID: 6574864094908167619}
+  anim: {fileID: 0}
 --- !u!114 &6574864094908167617
 MonoBehaviour:
   m_ObjectHideFlags: 0
