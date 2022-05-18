@@ -25,7 +25,7 @@ public class PlayerPower : MonoBehaviour
             destroyPS.Play();
             damage += 2.5f;
             slider.value = damage;
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
         }
     }
 }

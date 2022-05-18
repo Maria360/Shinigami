@@ -12,7 +12,7 @@ public class BossHealth : MonoBehaviour
     Slider slider;
     PlayerPower playerPower;
     //public AudioSource damageSFX;
-    //public Animator anim;
+    public Animator anim;
     float timer=3f;
     bool canChange;
     private void Start()
@@ -55,15 +55,20 @@ public class BossHealth : MonoBehaviour
             boss.healthPoints -= playerPower.damage / 2; //Me esta bajando el doble
             //damageSFX.Play();
             slider.value = boss.healthPoints;
-            if (boss.healthPoints == 50|| boss.healthPoints == 25|| boss.healthPoints == 10)
+            if (boss.healthPoints == 150 || boss.healthPoints == 50 ||  boss.healthPoints == 10 )
             {
-                canChange = true;
+                anim.SetBool("Chiquito", true);
+                StartCoroutine(Agrandarse());
+                StartCoroutine(Normal());
                 Debug.Log("chiquito");
             }
             if (boss.healthPoints <= 0)
             {
-                Esperar();
-                Destroy(gameObject);
+                //Esperar();
+                StartCoroutine(Esperar());
+                FindObjectOfType<Manager>().WinGame(); //Esto consume mucho recurso :c
+                //Destroy(gameObject);
+
 
             }
         }
@@ -72,8 +77,21 @@ public class BossHealth : MonoBehaviour
     IEnumerator Esperar()
     {
         yield return new WaitForSeconds(3);
-        //anim.SetBool("die", true);
+        Destroy(gameObject);
 
+    }
+    IEnumerator Agrandarse()
+    {
+        yield return new WaitForSeconds(15);
+        anim.SetBool("Grande", true);
+        anim.SetBool("Chiquito", false);
+    }
+    IEnumerator Normal()
+    {
+        yield return new WaitForSeconds(10);
+        anim.SetBool("Grande", false);
+        anim.SetBool("Chiquito", false);
+        anim.SetTrigger("Normal");
 
     }
 }

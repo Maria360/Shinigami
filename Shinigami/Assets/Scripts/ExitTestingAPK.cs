@@ -12,6 +12,11 @@ public class ExitTestingAPK : MonoBehaviour
     }
     public void StartGame()
     {
+        SceneManager.LoadScene(2);
+        Time.timeScale = 1f;
+    }
+    public void StartTuto()
+    {
         SceneManager.LoadScene(1);
         Time.timeScale = 1f;
     }

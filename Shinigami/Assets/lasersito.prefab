@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1463235026618018541}
   - component: {fileID: 1463235026618018542}
   - component: {fileID: 5006144891535907365}
+  - component: {fileID: 3547210593494086412}
   m_Layer: 0
   m_Name: lasersito
   m_TagString: Untagged
@@ -145,5 +146,17 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 10.13}
   m_EdgeRadius: 0
+--- !u!114 &3547210593494086412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463235026618018543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9efc0cfa8d7c1438325467a95fa6cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
