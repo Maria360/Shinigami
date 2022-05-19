@@ -7,6 +7,7 @@ public class npc : MonoBehaviour
     public float dummyHealth;
     public float damage2Dummy;
     public Animator anim;
+    public AudioSource impactSFX;
     //public AudioSource damageSFX;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,6 +21,7 @@ public class npc : MonoBehaviour
             if (dummyHealth <= 0)
             {
                 anim.SetBool("Destroyed", true);
+                impactSFX.Play();
 
                 //deadDummyEffect.Play();
                 StartCoroutine(Destruir());

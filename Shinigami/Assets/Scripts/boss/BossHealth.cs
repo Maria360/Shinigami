@@ -11,13 +11,17 @@ public class BossHealth : MonoBehaviour
     public GameObject HealthBarPanel;
     Slider slider;
     PlayerPower playerPower;
-    //public AudioSource damageSFX;
+    public AudioSource chiquitoSFX;
+    public AudioSource grandeSFX;
+    public AudioSource winSFX;
+    public GameObject winPanel;
     public Animator anim;
     float timer=3f;
     bool canChange;
     private void Start()
     {
         boss = GetComponent<Boss>();
+        winPanel.SetActive(false);
         playerPower = FindObjectOfType<PlayerPower>();
         //HealthBarPanel.SetActive(false);
         HealthBarPanel.SetActive(true);
@@ -57,6 +61,7 @@ public class BossHealth : MonoBehaviour
             slider.value = boss.healthPoints;
             if (boss.healthPoints == 150 || boss.healthPoints == 50 ||  boss.healthPoints == 10 )
             {
+                chiquitoSFX.Play();
                 anim.SetBool("Chiquito", true);
                 StartCoroutine(Agrandarse());
                 StartCoroutine(Normal());
@@ -65,8 +70,11 @@ public class BossHealth : MonoBehaviour
             if (boss.healthPoints <= 0)
             {
                 //Esperar();
+                winSFX.Play();
+                winPanel.SetActive(true);
+                FindObjectOfType<Manager>().WinGame();
                 StartCoroutine(Esperar());
-                FindObjectOfType<Manager>().WinGame(); //Esto consume mucho recurso :c
+                //Esto consume mucho recurso :c
                 //Destroy(gameObject);
 
 
@@ -82,7 +90,8 @@ public class BossHealth : MonoBehaviour
     }
     IEnumerator Agrandarse()
     {
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(10);
+        grandeSFX.Play();
         anim.SetBool("Grande", true);
         anim.SetBool("Chiquito", false);
     }

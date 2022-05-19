@@ -11,7 +11,7 @@ public class Laser : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 3f)
+        if (timer >= 2f)
         {
             Instantiate(laserPrefab, firepoint.position, firepoint.rotation);
             timer = 0f;

@@ -13,6 +13,8 @@ public class EnemyHealth : MonoBehaviour
     PlayerPower playerPower;
     public AudioSource damageSFX;
     public Animator anim;
+    public AudioSource deadSkullSFX;
+    public ParticleSystem deadSkullFX;
     private void Start()
     {
         enemy = GetComponent<Enemy>();
@@ -33,18 +35,18 @@ public class EnemyHealth : MonoBehaviour
 
             if (enemy.healthPoints <= 0)
             {
-                Esperar();
-                Destroy(gameObject);
-                
+                deadSkullSFX.Play();
+                deadSkullFX.Play();
+                //anim.SetBool("die", true);
+                StartCoroutine(Esperar());
+
             }
         }
     }
 
     IEnumerator Esperar()
     {
-        yield return new WaitForSeconds(3);
-        anim.SetBool("die", true);
-
-
+        yield return new WaitForSeconds(0.2f);
+        Destroy(gameObject);
     }
 }

@@ -23,7 +23,7 @@ public class PlayerPower : MonoBehaviour
         if(collision.CompareTag("Power Up"))
         {
             destroyPS.Play();
-            damage += 2.5f;
+            damage += 2f;
             slider.value = damage;
             //Destroy(collision.gameObject);
         }
